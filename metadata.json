@@ -1,0 +1,6 @@
+{
+  "name": "Kashish Beauty Parlour",
+  "description": "Luxury Ladies Beauty Salon & Bridal Studio in Hyderabad, Pakistan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

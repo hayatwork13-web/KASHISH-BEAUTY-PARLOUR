@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* --- CUSTOM LUXURY ROOT PROPERTIES & STYLES --- */
+:root {
+  --primary-bg: #FFF8FB;
+  --secondary-bg: #FDEEF4;
+  --accent-pink: #E56A98;
+  --rose-gold: #C88A9A;
+  --text-color: #2C2C2C;
+  --muted-text: #6F6F6F;
+  --card-bg: #FFFFFF;
+  --border-color: #F2DCE5;
+  --gold-glow: rgba(200, 138, 154, 0.15);
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--primary-bg);
+}
+
+/* --- SCROLLBAR --- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--primary-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--rose-gold);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-pink);
+}
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3, h4, .font-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+/* --- BUTTONS --- */
+.btn-luxury {
+  background: linear-gradient(135deg, #E56A98 0%, #C88A9A 100%);
+  color: #FFFFFF;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 15px rgba(229, 106, 152, 0.2);
+}
+
+.btn-luxury::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  transition: all 0.6s ease;
+}
+
+.btn-luxury:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(229, 106, 152, 0.35);
+}
+
+.btn-luxury:hover::before {
+  left: 100%;
+}
+
+.btn-outline-luxury {
+  background: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--rose-gold);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-outline-luxury:hover {
+  background: var(--secondary-bg);
+  color: var(--accent-pink);
+  border-color: var(--accent-pink);
+  transform: translateY(-2px);
+}
+
+/* --- GLASSMORPHISM & LUXURY CARDS --- */
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(242, 220, 229, 0.6);
+  border-radius: 20px;
+}
+
+.luxury-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(229, 106, 152, 0.02);
+}
+
+.luxury-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-pink);
+  box-shadow: 0 15px 35px rgba(200, 138, 154, 0.12);
+}
+
+/* --- DECORATIVE LUXURY SHAPES --- */
+.luxury-glow-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: 0;
+  animation: float-blob 20s infinite alternate ease-in-out;
+}
+
+@keyframes float-blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  50% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  100% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+}
+
+/* --- LUXURY SECTION DIVIDER --- */
+.luxury-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.luxury-divider::before,
+.luxury-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rose-gold), transparent);
+  max-width: 150px;
+}
+
+.luxury-divider-icon {
+  margin: 0 1.5rem;
+  color: var(--accent-pink);
+  font-size: 1.25rem;
+  letter-spacing: 0.2em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.luxury-divider-icon::before,
+.luxury-divider-icon::after {
+  content: '✦';
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* --- ANIMATIONS & INTERACTIVE STATES --- */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Service Tab Styles */
+.service-tab {
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.service-tab::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-pink);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.service-tab.active {
+  color: var(--accent-pink);
+  font-weight: 600;
+}
+
+.service-tab.active::after {
+  width: 100%;
+}
+
+/* Floating WhatsApp Badge Ring */
+.pulse-ring {
+  position: relative;
+}
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  border: 4px solid #25D366;
+  animation: pulse-ring-anim 2s infinite ease-in-out;
+  opacity: 0.6;
+}
+
+@keyframes pulse-ring-anim {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Double Elegant Border Frame */
+.elegant-frame {
+  position: relative;
+  border: 1px solid var(--border-color);
+  padding: 8px;
+  border-radius: 12px;
+}
+
+.elegant-frame-inner {
+  border: 1px solid rgba(200, 138, 154, 0.3);
+  padding: 1.5rem;
+  border-radius: 8px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* VIP Badge */
+.vip-badge {
+  background: linear-gradient(135deg, #DFAC6C 0%, #C58F49 100%);
+  color: white;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Testimonial Star */
+.star-rating {
+  color: #DFAC6C;
+}
+
+/* Contact map mock styling */
+.luxury-map-mock {
+  background: radial-gradient(circle at center, var(--secondary-bg) 0%, var(--primary-bg) 100%);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.map-grid-line {
+  position: absolute;
+  background-color: rgba(200, 138, 154, 0.08);
+}
